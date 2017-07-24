@@ -4,6 +4,7 @@ Created on Tue Oct 11 10:30:09 2016
 
 @author: Ketakee Nimavat
 """
+#GETS THE PAGE CONTENT FOR A PARTICULAR PAGE. SHALL BE USEFUL WHEN CONTENT WILL BE SCANNED FOR PROXIMITY TO THE REQUIRED TOPICS.
 import re
 import urllib2
 url="http://indianexpress.com/article/opinion/columns/narendra-modi-government-performance-growth-opposition-rahul-nitish-kumar-kejriwal-elections-3031502/"
