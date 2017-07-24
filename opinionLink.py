@@ -38,8 +38,9 @@ def buildkeylist(keys,keydict):
     return keys
     
     
-    
-def preprocessing():
+
+#n = number of pages of the column section that you want to search through    
+def preprocessing(n):
         i=0
         url=[]
         title=[]
@@ -48,7 +49,7 @@ def preprocessing():
         keydict={}
         keysearchdict={}
         website = "http://indianexpress.com/section/opinion/columns/"
-        for j in range(1,2):
+        for j in range(1,n):
             appnd="page/"+str(j)
             wb=website+appnd
             print(wb)
@@ -75,13 +76,13 @@ def preprocessing():
         return keysearchdict,urldict
         
 
-
-k,u=preprocessing()
+#n = number of pages of the column section that you want to search through. here n=5.
+k,u=preprocessing(5)
 l=search("india",k)
 print(l)
 
 
-f="C:\\Users\\Ketakee Nimavat\\Desktop\\Keydict.txt"
+f="Keydict.txt"
 f1=open(f,'w')
 for elem in k:
     f1.write(str(elem))
@@ -92,15 +93,15 @@ for elem in k:
     f1.write("\n")
 f1.close()
  
-"""
 
-w="C:\\Users\\Ketakee Nimavat\\Desktop\\output.html"
+w="output.html"
 w=open(w,'w')
-message = \"""<html>
+#html page content
+message = """<html>
 <head></head>
 <body>
-<p>
-\"""
+<p>"""
+
 
 for elem in l:
     ahref="<a href=\"website\" target=\"_blank\">Substitute</a>"
@@ -111,24 +112,19 @@ for elem in l:
     message+=u[elem[0]][2]
     message+="<br> <br>"
     
-message+=\"""</p>
+message+="""</p>
 </body>
-</html>\"""
+</html>"""
 
 w.write(message)
 w.close()
+  
+#opening the output.html file would show all the relevant links.
     
-    
-"""
 
 
-    
-    
-#print(url)
-#print(title)
-#print(description)
-#print(ln)
-#print(keys)
+
+#A test module to get the keywords from the link of the news article itself. ****CAN BE IGNORED****
 
 """
 print(links[0])
@@ -139,10 +135,13 @@ for elem in l:
     print(keywords)
 """
 
+
+#alternate way of implementing link storage where links are stored in a text file and then retreived from there. As opposed to the current impractical way where everything is stored in alist temporarily.
+
 """
 openwebsite1 = urllib2.urlopen(l)
 site = openwebsite1.read()
-f="C:\\Users\\Ketakee Nimavat\\Desktop\\New Text Document.txt"
+f="list.txt"
 f1 = open(f,'w')
 match=re.findall("<p>.*</p>",site)
 for elem in match:
@@ -159,8 +158,6 @@ for elem in match:
 
             
 """     
-"""getting the keywords/nouns"""
-
 #f1.close
 
     
